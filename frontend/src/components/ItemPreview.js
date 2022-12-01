@@ -1,6 +1,6 @@
 import React from "react";
-import Placeholder from "../imgs/placeholder.png"
 import { Link } from "react-router-dom";
+import Placeholder from "../imgs/placeholder.png";
 import agent from "../agent";
 import { connect } from "react-redux";
 import { ITEM_FAVORITED, ITEM_UNFAVORITED } from "../constants/actionTypes";
