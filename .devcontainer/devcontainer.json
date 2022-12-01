@@ -50,5 +50,12 @@
     "workbench.welcomePage.walkthroughs.openOnInstall": false,
     "workbench.welcomePage.experimental.videoTutorials": "off",
     "github.codespaces.defaultExtensions": []
-  }
+},
+"customizations": {
+	"vscode": {
+		"extensions": [
+			"esbenp.prettier-vscode"
+		]
+	}
+}
 }
