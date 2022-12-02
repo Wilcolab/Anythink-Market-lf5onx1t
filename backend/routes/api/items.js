@@ -146,6 +146,14 @@ router.post("/", auth.required, function(req, res, next) {
 
       var item = new Item(req.body.item);
 
+      function isImage(url) {
+        return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url)
+      }
+
+      if (item.image) {
+        item.image = isImage(item.image) ? item.image : "" 
+      }
+
       item.seller = user;
 
       return item.save().then(function() {
