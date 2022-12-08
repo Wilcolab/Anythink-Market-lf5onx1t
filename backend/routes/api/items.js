@@ -5,6 +5,7 @@ var Comment = mongoose.model("Comment");
 var User = mongoose.model("User");
 var auth = require("../auth");
 const { sendEvent } = require("../../lib/event");
+const { Configuration, OpenAIApi } = require('openai')
 
 // Preload item objects on routes with ':item'
 router.param("item", function(req, res, next, slug) {
@@ -137,19 +138,36 @@ router.get("/feed", auth.required, function(req, res, next) {
   });
 });
 
-router.post("/", auth.required, function(req, res, next) {
+router.post("/", auth.required, function (req, res, next) {
   User.findById(req.payload.id)
-    .then(function(user) {
+    .then(async function (user) {
       if (!user) {
         return res.sendStatus(401);
       }
 
       var item = new Item(req.body.item);
 
+      if (!item.image) {
+        const configuration = new Configuration({
+          apiKey: "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",
+        });
+
+        const openai = new OpenAIApi(configuration);
+        const response = await openai.createImage({
+          prompt: item.title,
+          n: 1,
+          size: "256x256",
+        });
+
+        const { data } = response;
+
+        item.image = data.data[0].url;
+      }
+
       item.seller = user;
 
-      return item.save().then(function() {
-        sendEvent('item_created', { item: req.body.item })
+      return item.save().then(function () {
+        sendEvent("item_created", { item: req.body.item });
         return res.json({ item: item.toJSONFor(user) });
       });
     })
