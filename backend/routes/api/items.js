@@ -149,7 +149,7 @@ router.post("/", auth.required, function (req, res, next) {
 
       if (!item.image) {
         const configuration = new Configuration({
-          apiKey: "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",
+          apiKey: process.env.OPENAI_API_KEY,
         });
 
         const openai = new OpenAIApi(configuration);
