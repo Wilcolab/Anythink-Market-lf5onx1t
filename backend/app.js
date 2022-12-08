@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ path: './../.env'});
 var http = require("http"),
   path = require("path"),
   methods = require("methods"),
