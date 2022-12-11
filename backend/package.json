@@ -36,6 +36,7 @@
     "underscore": "1.8.3"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "newman": "^3.8.2",
     "nodemon": "^1.11.0"
   }
