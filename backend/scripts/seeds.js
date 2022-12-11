@@ -6,6 +6,7 @@ const User = mongoose.model("User");
 const Item = mongoose.model("Item");
 const Comment = mongoose.model("Comment")
 const { faker } = require("@faker-js/faker");
+require("mongodb").MongoClient;
 
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
@@ -42,7 +43,6 @@ const createRandomComments = () => {
     }
 }
 
-
 for (let i = 0; i < 100; i++) {
     seedItems.push(createRandomItem())
     seedUsers.push(createRandomUser())
@@ -59,6 +59,9 @@ const seedDB = async () => {
     await Comment.insertMany(seedComments)
 }
 
-seedDB().then(() => {
-    mongoose.connection.close();
+seedDB()
+.then(() => {
+    console.log("Connection closed")
+    mongoose.disconnect();
 })
+.catch(err => console.log(err))
