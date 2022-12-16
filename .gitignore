@@ -29,3 +29,9 @@ yarn-error.log*
 
 #IDEs
 /.idea/
+
+# Temp
+backend.js
+mongo.js
+logs.csv
+check.js
