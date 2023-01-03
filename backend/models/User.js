@@ -83,6 +83,7 @@ UserSchema.methods.toAuthJSON = function() {
   };
 };
 
+// touched 
 UserSchema.methods.toProfileJSONFor = function(user) {
   return {
     username: this.username,
