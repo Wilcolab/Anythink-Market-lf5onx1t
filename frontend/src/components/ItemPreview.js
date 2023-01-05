@@ -54,7 +54,7 @@ const ItemPreview = (props) => {
               alt={item.seller.username}
               className="user-pic rounded-circle pr-1 mr-2"
             />
-            {!item.seller.isVerified  && (
+            {item.seller.isVerified  && (
               <div id="item_verified_seller_item" className="d-flex justify-content-center align-items-center">
                 <div className="item-footer">
                   <img className="mr-1" src="verified_seller.svg" alt="icon"/><span className="text-uppercase text-white font-weight-bold">TOP SELLER</span>
