@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import agent from "../agent";
 import { connect } from "react-redux";
 import { ITEM_FAVORITED, ITEM_UNFAVORITED } from "../constants/actionTypes";
-import verifiedSellerIcon from "./../imgs/verified_seller.svg"
+// import verifiedSellerIcon from "./../imgs/verified_seller.svg"
 
 const mapDispatchToProps = (dispatch) => ({
   favorite: (slug) =>
@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const ItemPreview = (props) => {
   const item = props.item;
-
+  console.log(item)
   const handleClick = (ev) => {
     ev.preventDefault();
     if (item.favorited) {
@@ -54,10 +54,10 @@ const ItemPreview = (props) => {
               alt={item.seller.username}
               className="user-pic rounded-circle pr-1 mr-2"
             />
-            {item.seller.isVerified  && (
+            {!item.seller.isVerified  && (
               <div id="item_verified_seller_item" className="d-flex justify-content-center align-items-center">
                 <div className="item-footer">
-                  <img className="mr-1" src={verifiedSellerIcon} alt="icon"/><span className="text-uppercase text-white font-weight-bold">TOP SELLER</span>
+                  <img className="mr-1" src="verified_seller.svg" alt="icon"/><span className="text-uppercase text-white font-weight-bold">TOP SELLER</span>
                 </div>
               </div>
             )}
