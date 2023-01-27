@@ -1,5 +1,4 @@
 'use strict'
-require('dotenv').config()
 /**
  * New Relic agent configuration.
  *
@@ -10,12 +9,10 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['Anythink-Market'],
+  app_name: ['My Application'],
   /**
    * Your New Relic license key.
-   * this key is hidden by environment variable
    */
-  license_key: process.env.NEW_RELIC_LICENSE_KEY,
   logging: {
     /**
      * Level at which to log. 'trace' is most useful to New Relic when diagnosing
