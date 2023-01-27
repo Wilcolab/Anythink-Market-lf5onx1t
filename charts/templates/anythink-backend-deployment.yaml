@@ -32,7 +32,11 @@ spec:
             - name: NEW_RELIC_APP_NAME
               value: "Anythink-Market"
             - name: NEW_RELIC_LICENSE_KEY
-              value: new-relic-license-key
+              valueFrom:
+                secretKeyRef:
+                  name: new-relic-license-key
+                  key: new-relic-license-key
+                  optional: false
           image: "{{ include "anythink-tenant.backendRepository" .}}:{{ .Values.backend.image.tag }}"
           imagePullPolicy: {{ .Values.backend.image.pullPolicy }}
           name: {{ .Values.backend.serviceName }}
