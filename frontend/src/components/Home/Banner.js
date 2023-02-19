@@ -5,7 +5,6 @@ import agent from "../../agent";
 const Banner = ({ onSearchTitle }) => {
 
   const handleChange = (e) => {
-    console.log(e.target)
     e.preventDefault();
     const title = e.target.value;
     if (e.target.value.length >= 3 || e.target.value === ""){
