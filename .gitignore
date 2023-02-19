@@ -5,6 +5,7 @@
 /backend/node_modules
 /frontend/node_modules
 /.wilco-helpers/node_modules
+/tests/e2e/node_modules
 /.pnp
 .pnp.js
 
@@ -29,8 +30,3 @@ yarn-error.log*
 
 #IDEs
 /.idea/
-
-#Custom
-config
-get_helm.sh
-kubectl
