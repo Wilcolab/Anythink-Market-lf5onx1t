@@ -1,14 +1,13 @@
 import { Route, Redirect } from "react-router-dom" 
 
-const PrivateRoute = ({ component, currentUser, ...rest }) => {
+const PrivateRoute = ({ currentUser, component, ...rest }) => {
   return (
     <Route
         {...rest}
-        render={({ location }) => {
-            return !currentUser.isAuthenticated ? ( component ) : (<Redirect to={{ pathname: "/", state: {from: location}}} />)
-        }}
-    >
-    </Route>
+        render={({ location }) => (
+            currentUser.isAuthenticated ? ( component ) : (<Redirect to={{ pathname: "/", state: {from: location}}} />)
+  )}
+    />
   )
 }
 
