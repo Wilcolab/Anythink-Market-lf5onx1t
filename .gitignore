@@ -34,3 +34,4 @@ yarn-error.log*
 config
 get_helm.sh
 kubectl
+private_routes.test.js
