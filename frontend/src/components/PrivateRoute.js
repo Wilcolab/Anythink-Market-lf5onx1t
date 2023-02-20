@@ -4,7 +4,7 @@ const PrivateRoute = ({ currentUser, component }) => {
   return (
     <Route
         render={({ location }) => (
-            currentUser.isAuthenticated ? ( component() ) : (<Redirect to="/" />)
+            currentUser?.isAuthenticated ? ( component() ) : (<Redirect to="/" />)
   )}
     />
   )
