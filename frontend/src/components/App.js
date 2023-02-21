@@ -12,7 +12,6 @@ import Profile from "./Profile";
 import ProfileFavorites from "./ProfileFavorites";
 import Register from "./Register";
 import Settings from "./Settings";
-import PrivateRoute from "./PrivateRoute";
 import { store } from "../store";
 import { push } from "react-router-redux";
 
@@ -49,7 +48,6 @@ class App extends React.Component {
     this.props.onLoad(token ? agent.Auth.current() : null, token);
   }
 
-  
   render() {
     if (this.props.appLoaded) {
       return (
@@ -63,9 +61,9 @@ class App extends React.Component {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/editor/:slug" component={Editor} />
-            <PrivateRoute currentUser={this.props.currentUser} component={Editor} />
+            <Route path="/editor" component={Editor} />
             <Route path="/item/:id" component={Item} />
-            <PrivateRoute currentUser={this.props.currentUser} component={Settings} />
+            <Route path="/settings" component={Settings} />
             <Route path="/@:username/favorites" component={ProfileFavorites} />
             <Route path="/@:username" component={Profile} />
           </Switch>
