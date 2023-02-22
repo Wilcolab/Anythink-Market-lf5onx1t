@@ -31,7 +31,7 @@ const ItemPreview = (props) => {
 
   return (
     <div
-      className="card bg-dark border-light p-3"
+      className="card bg-dark border-light p-3 h-100"
       style={{ borderRadius: "20px" }}
       id={`item_${item.slug}`}
     >
