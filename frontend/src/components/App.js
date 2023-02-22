@@ -12,7 +12,6 @@ import Profile from "./Profile";
 import ProfileFavorites from "./ProfileFavorites";
 import Register from "./Register";
 import Settings from "./Settings";
-import NotFound from "./NotFound";
 import { store } from "../store";
 import { push } from "react-router-redux";
 
@@ -67,7 +66,6 @@ class App extends React.Component {
             <Route path="/settings" component={Settings} />
             <Route path="/@:username/favorites" component={ProfileFavorites} />
             <Route path="/@:username" component={Profile} />
-            <Route path="*" component={NotFound} />
           </Switch>
         </div>
       );
