@@ -5,7 +5,7 @@ const LanguageSelector = ({ i18n, t }) => {
     i18n.changeLanguage(e.target.value);
   };
   return (
-    <div>
+    <>
       <span>{t("header.language")}</span>
       <select
         id="set-language"
@@ -15,7 +15,7 @@ const LanguageSelector = ({ i18n, t }) => {
         <option value="en">{t("header.english")}</option>
         <option value="fr">{t("header.french")}</option>
       </select>
-    </div>
+    </>
   );
 };
 
