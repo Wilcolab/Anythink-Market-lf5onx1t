@@ -1,7 +1,7 @@
 {
     "header": {
-        "sign-up": "Sign up",
         "sign-in": "Sign in",
+        "sign-up": "Sign up",
         "language": "Language",
         "english": "English",
         "french": "French",
