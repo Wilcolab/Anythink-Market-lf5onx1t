@@ -1,19 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../imgs/topbar_logo.png";
+import LanguageSelector from "./LanguageSelector";
+import { useTranslation } from "react-i18next";
 
-const LoggedOutView = () => {
+const LoggedOutView = ({ t }) => {
   return (
     <ul className="navbar-nav ml-auto">
       <li className="nav-item">
         <Link to="/login" className="nav-link">
-          Sign in
+          {t("header.sign-in")}
         </Link>
       </li>
 
       <li className="nav-item">
         <Link to="/register" className="nav-link">
-          Sign up
+          {t("header.sign-up")}
         </Link>
       </li>
     </ul>
@@ -49,32 +51,25 @@ const LoggedInView = (props) => {
   );
 };
 
-class Header extends React.Component {
-  render() {
-    return (
-      <nav
-        className="navbar navbar-expand-md navbar-dark"
-        style={{ padding: "0.5rem 2rem" }}
-      >
-        <Link to="/" className="navbar-brand">
-          <img alt="logo" src={logo} />
-        </Link>
+function Header(props) {
+  const [t, i18n] = useTranslation("global");
+  return (
+    <nav
+      className="navbar navbar-expand-md navbar-dark"
+      style={{ padding: "0.5rem 2rem" }}
+    >
+      <Link to="/" className="navbar-brand">
+        <img alt="logo" src={logo} />
+      </Link>
 
-        {this.props.currentUser ? (
-          <LoggedInView currentUser={this.props.currentUser} />
-        ) : (
-          <LoggedOutView currentUser={this.props.currentUser} />
-        )}
-        <div>
-          <span>Language </span>
-          <select id="set-language" className="form-select" aria-label="Default select sample">
-            <option value="en" selected>English</option>
-            <option value="fr" selected>French</option>
-          </select>
-        </div>
-      </nav>
-    );
-  }
+      {props.currentUser ? (
+        <LoggedInView currentUser={props.currentUser} />
+      ) : (
+        <LoggedOutView currentUser={props.currentUser} t={t} />
+      )}
+      <LanguageSelector i18n={i18n} />
+    </nav>
+  );
 }
 
 export default Header;
