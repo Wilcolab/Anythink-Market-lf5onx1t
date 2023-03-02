@@ -65,6 +65,13 @@ class Header extends React.Component {
         ) : (
           <LoggedOutView currentUser={this.props.currentUser} />
         )}
+        <div>
+          <span>Language </span>
+          <select id="set-language" className="form-select" aria-label="Default select sample">
+            <option value="en" selected>English</option>
+            <option value="fr" selected>French</option>
+          </select>
+        </div>
       </nav>
     );
   }
