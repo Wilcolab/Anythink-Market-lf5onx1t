@@ -10,7 +10,6 @@ const LanguageSelector = ({ i18n, t }) => {
       <select
         id="set-language"
         className="form-select"
-        aria-label="Default select sample"
         onChange={handleSelection}
       >
         <option value="en">{t("header.english")}</option>

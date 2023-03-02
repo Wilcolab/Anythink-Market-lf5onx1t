@@ -27,13 +27,13 @@ const LoggedInView = (props) => {
     <ul className="navbar-nav ml-auto">
       <li className="nav-item">
         <Link to="/editor" className="nav-link">
-          <i className="ion-compose"></i>&nbsp;New Item
+          <i className="ion-compose"></i>&nbsp;{props.t("header.new-item")}
         </Link>
       </li>
 
       <li className="nav-item">
         <Link to="/settings" className="nav-link">
-          <i className="ion-gear-a"></i>&nbsp;Settings
+          <i className="ion-gear-a"></i>&nbsp;{props.t("header.settings")}
         </Link>
       </li>
 
@@ -63,7 +63,7 @@ function Header(props) {
       </Link>
 
       {props.currentUser ? (
-        <LoggedInView currentUser={props.currentUser} />
+        <LoggedInView currentUser={props.currentUser} t={t} />
       ) : (
         <LoggedOutView currentUser={props.currentUser} t={t} />
       )}
