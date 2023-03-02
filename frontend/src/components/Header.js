@@ -67,7 +67,7 @@ function Header(props) {
       ) : (
         <LoggedOutView currentUser={props.currentUser} t={t} />
       )}
-      <LanguageSelector i18n={i18n} />
+      <LanguageSelector i18n={i18n} t={t} />
     </nav>
   );
 }

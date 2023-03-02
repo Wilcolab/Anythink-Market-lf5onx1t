@@ -1,6 +1,9 @@
 {
     "header": {
         "sign-up": "s'inscrire",
-        "sign-in": "s'identifier"
+        "sign-in": "s'identifier",
+        "language": "Langue",
+        "english": "Anglais",
+        "french": "Français"
     }
 }
