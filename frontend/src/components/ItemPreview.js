@@ -42,7 +42,7 @@ const ItemPreview = (props) => {
         className="card-img-top item-img"
         style={{ borderRadius: "20px" }}
       />
-      <div className="card-body">
+      <div id="item_verified_seller_item" className="card-body">
         <Link to={`/item/${item.slug}`} className="text-white">
           <h3 className="card-title">{item.title}</h3>
           <p className="card-text crop-text-3">{item.description}</p>
