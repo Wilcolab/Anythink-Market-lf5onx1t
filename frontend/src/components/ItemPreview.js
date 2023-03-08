@@ -42,7 +42,7 @@ const ItemPreview = (props) => {
         className="card-img-top item-img"
         style={{ borderRadius: "20px" }}
       />
-      <div id="item_verified_seller_item" className="card-body">
+      <div className="card-body">
         <Link to={`/item/${item.slug}`} className="text-white">
           <h3 className="card-title">{item.title}</h3>
           <p className="card-text crop-text-3">{item.description}</p>
@@ -57,12 +57,14 @@ const ItemPreview = (props) => {
               alt={item.seller.username}
               className="user-pic rounded-circle pr-1"
             />
-          {item.seller.isVerifed && (
-            <>
-              <img src={verifiedIcon} alt="icon verified seller" />
-              <span className="text-white text-uppercase mr-5">top seller</span>
-            </>
-          )}
+            {item.seller.isVerifed && (
+              <div id="item_verified_seller_item">
+                <span className="item-footer text-white">
+                  <img src={verifiedIcon} alt="icon" />
+                  TOP SELLER
+                </span>
+              </div>
+            )}
           </Link>
           <button className="btn btn-outline-secondary" onClick={handleClick}>
             <i className="ion-heart"></i> {item.favoritesCount}
