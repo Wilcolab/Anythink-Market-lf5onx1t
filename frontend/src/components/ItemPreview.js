@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import agent from "../agent";
 import { connect } from "react-redux";
 import { ITEM_FAVORITED, ITEM_UNFAVORITED } from "../constants/actionTypes";
+import verifiedIcon from "../imgs/verified_seller.svg"
 
 const mapDispatchToProps = (dispatch) => ({
   favorite: (slug) =>
@@ -57,9 +58,9 @@ const ItemPreview = (props) => {
               className="user-pic rounded-circle pr-1"
             />
           </Link>
-          {!item.seller.isVerifed && (
+          {item.seller.isVerifed && (
             <div id="verified_seller_item" className="item-footer">
-              <img src="/verified_seller.svg" alt="verified_seller" />
+              <img src={verifiedIcon} alt="verified_seller" />
               TOP SELLER
             </div>
           )}
