@@ -24,10 +24,6 @@ var UserSchema = new mongoose.Schema(
     },
     bio: String,
     image: String,
-    isVerified: {
-      type: Boolean,
-      default: false
-    },
     role: {
       type: String,
       enum: ["user", "admin"],
@@ -87,7 +83,6 @@ UserSchema.methods.toProfileJSONFor = function(user) {
   return {
     username: this.username,
     bio: this.bio,
-    isVerified: this.isVerified,
     image:
       this.image || "https://static.productionready.io/images/smiley-cyrus.jpg",
     following: user ? user.isFollowing(this._id) : false
