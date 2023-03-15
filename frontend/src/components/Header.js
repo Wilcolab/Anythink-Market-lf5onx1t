@@ -2,19 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../imgs/topbar_logo.png";
 import LanguageSelector from "./LanguageSelector";
+import { useTranslation } from "react-i18next";
 
-const LoggedOutView = () => {
+const LoggedOutView = (props) => {
   return (
     <ul className="navbar-nav ml-auto">
       <li className="nav-item">
         <Link to="/login" className="nav-link">
-          Sign in
+          {props.t("header.sign-in")}
         </Link>
       </li>
 
       <li className="nav-item">
         <Link to="/register" className="nav-link">
-          Sign up
+          {props.t("header.sign-up")}
         </Link>
       </li>
     </ul>
@@ -26,13 +27,13 @@ const LoggedInView = (props) => {
     <ul className="navbar-nav ml-auto">
       <li className="nav-item">
         <Link to="/editor" className="nav-link">
-          <i className="ion-compose"></i>&nbsp;New Item
+          <i className="ion-compose"></i>&nbsp;{props.t("header.new-item")}
         </Link>
       </li>
 
       <li className="nav-item">
         <Link to="/settings" className="nav-link">
-          <i className="ion-gear-a"></i>&nbsp;Settings
+          <i className="ion-gear-a"></i>&nbsp;{props.t("header.settings")}
         </Link>
       </li>
 
@@ -50,26 +51,26 @@ const LoggedInView = (props) => {
   );
 };
 
-class Header extends React.Component {
-  render() {
-    return (
-      <nav
-        className="navbar navbar-expand-md navbar-dark"
-        style={{ padding: "0.5rem 2rem" }}
-      >
-        <Link to="/" className="navbar-brand">
-          <img alt="logo" src={logo} />
-        </Link>
+const Header = (props) => {
+  const [t] = useTranslation("global");
 
-        {this.props.currentUser ? (
-          <LoggedInView currentUser={this.props.currentUser} />
-        ) : (
-          <LoggedOutView currentUser={this.props.currentUser} />
-        )}
-        <LanguageSelector  />
-      </nav>
-    );
-  }
-}
+  return (
+    <nav
+      className="navbar navbar-expand-md navbar-dark"
+      style={{ padding: "0.5rem 2rem" }}
+    >
+      <Link to="/" className="navbar-brand">
+        <img alt="logo" src={logo} />
+      </Link>
+
+      {props.currentUser ? (
+        <LoggedInView currentUser={props.currentUser} t={t} />
+      ) : (
+        <LoggedOutView currentUser={props.currentUser} t={t} />
+      )}
+      <LanguageSelector />
+    </nav>
+  );
+};
 
 export default Header;
