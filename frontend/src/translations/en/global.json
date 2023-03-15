@@ -1,0 +1,12 @@
+{
+    "header":
+    {
+        "language": "Language",
+        "sign-in": "Sign in",
+        "sign-up": "Sign up",
+        "english": "English",
+        "french": "French",
+        "new-item": "New Item",
+        "settings": "Settings"
+    }
+}
