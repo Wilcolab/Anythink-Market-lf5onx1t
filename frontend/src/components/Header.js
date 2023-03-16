@@ -65,7 +65,7 @@ const SelectLanguage = (props, context) => {
 
   return (
     <div>
-      <label>&nbsp;{context.t('Language')}&nbsp;</label>
+      <label>&nbsp;{context.t('language')}&nbsp;</label>
       <select id="set-language" value={lang} onChange={handleChange}>
         <option value="en">{context.t("english")}</option>
         <option value="fr">{context.t("french")}</option>
