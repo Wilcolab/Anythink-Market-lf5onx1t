@@ -1,21 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../imgs/topbar_logo.png";
-import LanguageSelector from "./LanguageSelector";
-import { useTranslation } from "react-i18next";
 
-const LoggedOutView = (props) => {
+const LoggedOutView = () => {
   return (
     <ul className="navbar-nav ml-auto">
       <li className="nav-item">
         <Link to="/login" className="nav-link">
-          {props.t("header.sign-in")}
+          Sign in
         </Link>
       </li>
 
       <li className="nav-item">
         <Link to="/register" className="nav-link">
-          {props.t("header.sign-up")}
+          Sign up
         </Link>
       </li>
     </ul>
@@ -27,13 +25,13 @@ const LoggedInView = (props) => {
     <ul className="navbar-nav ml-auto">
       <li className="nav-item">
         <Link to="/editor" className="nav-link">
-          <i className="ion-compose"></i>&nbsp;{props.t("header.new-item")}
+          <i className="ion-compose"></i>&nbsp;New Item
         </Link>
       </li>
 
       <li className="nav-item">
         <Link to="/settings" className="nav-link">
-          <i className="ion-gear-a"></i>&nbsp;{props.t("header.settings")}
+          <i className="ion-gear-a"></i>&nbsp;Settings
         </Link>
       </li>
 
@@ -51,26 +49,25 @@ const LoggedInView = (props) => {
   );
 };
 
-const Header = (props) => {
-  const [t] = useTranslation("global");
+class Header extends React.Component {
+  render() {
+    return (
+      <nav
+        className="navbar navbar-expand-md navbar-dark"
+        style={{ padding: "0.5rem 2rem" }}
+      >
+        <Link to="/" className="navbar-brand">
+          <img alt="logo" src={logo} />
+        </Link>
 
-  return (
-    <nav
-      className="navbar navbar-expand-md navbar-dark"
-      style={{ padding: "0.5rem 2rem" }}
-    >
-      <Link to="/" className="navbar-brand">
-        <img alt="logo" src={logo} />
-      </Link>
-
-      {props.currentUser ? (
-        <LoggedInView currentUser={props.currentUser} t={t} />
-      ) : (
-        <LoggedOutView currentUser={props.currentUser} t={t} />
-      )}
-      <LanguageSelector />
-    </nav>
-  );
-};
+        {this.props.currentUser ? (
+          <LoggedInView currentUser={this.props.currentUser} />
+        ) : (
+          <LoggedOutView currentUser={this.props.currentUser} />
+        )}
+      </nav>
+    );
+  }
+}
 
 export default Header;
