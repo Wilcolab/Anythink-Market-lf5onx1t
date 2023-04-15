@@ -8,7 +8,6 @@ import {
   REGISTER,
   REGISTER_PAGE_UNLOADED,
 } from "../constants/actionTypes";
-import PropTypes from "prop-types";
 
 const mapStateToProps = (state) => ({ ...state.auth });
 
@@ -46,14 +45,13 @@ class Register extends React.Component {
     const email = this.props.email;
     const password = this.props.password;
     const username = this.props.username;
-    const { t } = this.context;
 
     return (
       <div className="auth-page">
         <div className="container page text-center text-dark">
           <div className="row">
             <div className="col-md-6 offset-md-3 col-xs-12 bg-white p-4">
-              <h1 className="text-xs-center font-weight-bold pb-4">{t("sign-up")}</h1>
+              <h1 className="text-xs-center font-weight-bold pb-4">Sign Up</h1>
 
               <ListErrors errors={this.props.errors} />
 
@@ -72,7 +70,7 @@ class Register extends React.Component {
                       <input
                         className="form-control form-control-lg"
                         type="text"
-                        placeholder={t("username")}
+                        placeholder="Username"
                         value={this.props.username}
                         onChange={this.changeUsername}
                       />
@@ -92,7 +90,7 @@ class Register extends React.Component {
                       <input
                         className="form-control form-control-lg"
                         type="password"
-                        placeholder={t("password")}
+                        placeholder="Password"
                         value={this.props.password}
                         onChange={this.changePassword}
                       />
@@ -112,7 +110,7 @@ class Register extends React.Component {
                       <input
                         className="form-control form-control-lg"
                         type="email"
-                        placeholder={t("email")}
+                        placeholder="Email"
                         value={this.props.email}
                         onChange={this.changeEmail}
                       />
@@ -130,13 +128,13 @@ class Register extends React.Component {
                       borderRadius: "5px",
                     }}
                   >
-                    {t("SIGN-UP")}
+                    SIGN UP
                   </button>
                 </fieldset>
               </form>
               <p className="text-center pt-4">
                 <Link to="/login" className="text-light">
-                  {t("have-an-account?")}
+                  Have an account?
                 </Link>
               </p>
             </div>
@@ -146,9 +144,5 @@ class Register extends React.Component {
     );
   }
 }
-
-Register.contextTypes = {
-  t: PropTypes.func,
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);
