@@ -8,14 +8,7 @@ Please find more info about each part in the relevant Readme file ([frontend](fr
 
 When implementing a new feature or fixing a bug, please create a new pull request against `main` from a feature/bug branch and add `@vanessa-cooper` as reviewer.
 
-## How to run in dev mode?
-
-### Using Codespace
-1.  run `docker-compose up`
-### On your local machine
+## How to run locally?
 1. [Install Docker](https://docs.docker.com/get-docker/)
 2. [Install Docker Compose](https://docs.docker.com/compose/install/)
 3. Run `docker-compose up`. 
-
-## Tests
-Documentation about running the End to End test can be found under the `/tests` directory

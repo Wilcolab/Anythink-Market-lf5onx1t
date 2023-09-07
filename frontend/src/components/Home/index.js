@@ -1,6 +1,6 @@
 import Banner from "./Banner";
 import MainView from "./MainView";
-import React, { useEffect } from "react";
+import React from "react";
 import Tags from "./Tags";
 import agent from "../../agent";
 import { connect } from "react-redux";
@@ -26,29 +26,34 @@ const mapDispatchToProps = (dispatch) => ({
   onUnload: () => dispatch({ type: HOME_PAGE_UNLOADED }),
 });
 
-const Home = ({onLoad, onUnload, tags, onClickTag}) => {
-  const tab = "all";
-  const itemsPromise = agent.Items.all;
+class Home extends React.Component {
+  componentWillMount() {
+    const tab = "all";
+    const itemsPromise = agent.Items.all;
 
-  useEffect(() => {
-    onLoad(
+    this.props.onLoad(
       tab,
       itemsPromise,
       Promise.all([agent.Tags.getAll(), itemsPromise()])
     );
-    return onUnload;
-  }, [onLoad, onUnload, tab, itemsPromise]);
+  }
 
+  componentWillUnmount() {
+    this.props.onUnload();
+  }
+
+  render() {
     return (
       <div className="home-page">
         <Banner />
 
         <div className="container page">
-          <Tags tags={tags} onClickTag={onClickTag} />
+          <Tags tags={this.props.tags} onClickTag={this.props.onClickTag} />
           <MainView />
         </div>
       </div>
     );
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

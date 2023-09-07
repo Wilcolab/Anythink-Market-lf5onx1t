@@ -9,7 +9,6 @@ import {
   PROFILE_PAGE_LOADED,
   PROFILE_PAGE_UNLOADED,
 } from "../constants/actionTypes";
-import { withRouterParams } from "./commons";
 
 const EditProfileSettings = (props) => {
   if (props.isUser) {
@@ -77,12 +76,11 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class Profile extends React.Component {
-  componentDidMount() {
-    const username = this.props.params.username?.substring(1);
+  componentWillMount() {
     this.props.onLoad(
       Promise.all([
-        agent.Profile.get(username),
-        agent.Items.bySeller(username),
+        agent.Profile.get(this.props.match.params.username),
+        agent.Items.bySeller(this.props.match.params.username),
       ])
     );
   }
@@ -168,5 +166,5 @@ class Profile extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouterParams(Profile));
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
 export { Profile, mapStateToProps };

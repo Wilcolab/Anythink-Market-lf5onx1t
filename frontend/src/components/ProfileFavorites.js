@@ -7,7 +7,6 @@ import {
   PROFILE_PAGE_LOADED,
   PROFILE_PAGE_UNLOADED,
 } from "../constants/actionTypes";
-import { withRouterParams } from "./commons";
 
 const mapDispatchToProps = (dispatch) => ({
   onLoad: (pager, payload) =>
@@ -16,13 +15,12 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class ProfileFavorites extends Profile {
-  componentDidMount() {
-    const username = this.props.params.username?.substring(1);
+  componentWillMount() {
     this.props.onLoad(
-      (page) => agent.Items.favoritedBy(username, page),
+      (page) => agent.Items.favoritedBy(this.props.match.params.username, page),
       Promise.all([
-        agent.Profile.get(username),
-        agent.Items.favoritedBy(username),
+        agent.Profile.get(this.props.match.params.username),
+        agent.Items.favoritedBy(this.props.match.params.username),
       ])
     );
   }
@@ -35,7 +33,7 @@ class ProfileFavorites extends Profile {
     return (
       <ul className="nav nav-tabs outline-active">
         <li className="nav-item">
-          <Link className="nav-link" to={`/@${this.props.profile?.username}`}>
+          <Link className="nav-link" to={`/@${this.props.profile.username}`}>
             My Items
           </Link>
         </li>
@@ -43,7 +41,7 @@ class ProfileFavorites extends Profile {
         <li className="nav-item">
           <Link
             className="nav-link active"
-            to={`/@${this.props.profile?.username}/favorites`}
+            to={`/@${this.props.profile.username}/favorites`}
           >
             Favorited Items
           </Link>
@@ -53,4 +51,4 @@ class ProfileFavorites extends Profile {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouterParams(ProfileFavorites));
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileFavorites);
