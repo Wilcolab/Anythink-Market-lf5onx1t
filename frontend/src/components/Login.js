@@ -8,7 +8,6 @@ import {
   LOGIN,
   LOGIN_PAGE_UNLOADED,
 } from "../constants/actionTypes";
-import PropTypes from "prop-types";
 
 const mapStateToProps = (state) => ({ ...state.auth });
 
@@ -45,7 +44,7 @@ class Login extends React.Component {
         <div className="container page text-center text-dark">
           <div className="row">
             <div className="col-md-6 offset-md-3 col-xs-12 bg-white p-4">
-              <h1 className="text-xs-center font-weight-bold pb-4">{this.context.t("sign-in")}</h1>
+              <h1 className="text-xs-center font-weight-bold pb-4">Sign In</h1>
 
               <ListErrors errors={this.props.errors} />
 
@@ -64,7 +63,7 @@ class Login extends React.Component {
                       <input
                         className="form-control form-control-lg"
                         type="email"
-                        placeholder={this.context.t("email")}
+                        placeholder="Email"
                         value={email}
                         onChange={this.changeEmail}
                       />
@@ -84,7 +83,7 @@ class Login extends React.Component {
                       <input
                         className="form-control form-control-lg"
                         type="password"
-                        placeholder={this.context.t("password")}
+                        placeholder="Password"
                         value={password}
                         onChange={this.changePassword}
                       />
@@ -102,13 +101,13 @@ class Login extends React.Component {
                       borderRadius: "5px",
                     }}
                   >
-                    {this.context.t("SIGN-IN")}
+                    SIGN IN
                   </button>
                 </fieldset>
               </form>
               <p className="text-center pt-4">
                 <Link to="/register" className="text-light">
-                  {this.context.t("need-an-account?")}
+                  Need an account?
                 </Link>
               </p>
             </div>
@@ -118,9 +117,5 @@ class Login extends React.Component {
     );
   }
 }
-
-Login.contextTypes = {
-  t: PropTypes.func,
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
